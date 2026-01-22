@@ -129,6 +129,30 @@ laranjal_foods/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/laranjal_foods.dir/build.make CMakeFiles/laranjal_foods.dir/build
 .PHONY : laranjal_foods/fast
 
+src/init_and_destroy.o: src/init_and_destroy.cpp.o
+.PHONY : src/init_and_destroy.o
+
+# target to build an object file
+src/init_and_destroy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/laranjal_foods.dir/build.make CMakeFiles/laranjal_foods.dir/src/init_and_destroy.cpp.o
+.PHONY : src/init_and_destroy.cpp.o
+
+src/init_and_destroy.i: src/init_and_destroy.cpp.i
+.PHONY : src/init_and_destroy.i
+
+# target to preprocess a source file
+src/init_and_destroy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/laranjal_foods.dir/build.make CMakeFiles/laranjal_foods.dir/src/init_and_destroy.cpp.i
+.PHONY : src/init_and_destroy.cpp.i
+
+src/init_and_destroy.s: src/init_and_destroy.cpp.s
+.PHONY : src/init_and_destroy.s
+
+# target to generate assembly for a file
+src/init_and_destroy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/laranjal_foods.dir/build.make CMakeFiles/laranjal_foods.dir/src/init_and_destroy.cpp.s
+.PHONY : src/init_and_destroy.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... laranjal_foods"
+	@echo "... src/init_and_destroy.o"
+	@echo "... src/init_and_destroy.i"
+	@echo "... src/init_and_destroy.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

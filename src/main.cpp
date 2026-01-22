@@ -1,30 +1,39 @@
 #include <iostream>
 #include <pthread.h>    // variáveis e funções daqui possuem prefixo 'pthread_'
 #include <unistd.h>     // getpid(), gettid(), sleep()
+#include <vector>
+#include "headers/init_and_destroy.h"
 
-void* printOi(void* arg){
-    std::cout << "oi! o meu Thread ID no computador inteiro é: " << gettid() << std::endl;
-    std::cout << "ah! e meu \"Thread ID\" somente nesse programa é: " << (long) arg << std::endl << std::endl;
+#define NUM_REST 6
+std::vector<pthread_mutex_t> pedidos(NUM_REST);
+std::vector<pthread_mutex_t> motos(NUM_REST);
+
+#define NUM_ENTREG 4
+
+void* fazerEntrega(void* arg){
+    std::cout << "oi eu sou a thread " << gettid() << "!" << std::endl;
     sleep(3);
     pthread_exit(NULL);
 }
 
 int main(void){
 
-    pthread_t thread1;
-    if (pthread_create(&thread1, NULL, &printOi, (void *) 1) != 0){
-        return 1;
-    }
+    std::vector<pthread_t> entregNov(NUM_ENTREG);
+    std::vector<pthread_t> entregVet(NUM_ENTREG);
 
-    pthread_t thread2;
-    if (pthread_create(&thread2, NULL, &printOi, (void *) 2) != 0){
-        return 2;
-    }
+    initMutexes(pedidos);
+    initMutexes(motos);
 
-    pthread_join(thread1, NULL);
-    pthread_join(thread2, NULL);
+    spawnThreads(entregNov, &fazerEntrega);
+    spawnThreads(entregVet, &fazerEntrega);
 
-    std::cout << "cheguei aqui" << std::endl;
+    joinThreads(entregNov);
+    joinThreads(entregVet);
+
+    destroyMutexes(pedidos);
+    destroyMutexes(motos);
+    
+    std::cout << "cheguei no final" << std::endl;
 
     return 0;
 }

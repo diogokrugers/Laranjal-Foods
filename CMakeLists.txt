@@ -12,6 +12,9 @@ project(laranjal_foods VERSION 0.1)
 
 set(SOURCES
     src/main.cpp
+    src/init_and_destroy.cpp
 )
+
+add_compile_options(-Wall)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
