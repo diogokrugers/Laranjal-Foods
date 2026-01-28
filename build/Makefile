@@ -129,6 +129,30 @@ laranjal_foods/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/laranjal_foods.dir/build.make CMakeFiles/laranjal_foods.dir/build
 .PHONY : laranjal_foods/fast
 
+src/buildTabs.o: src/buildTabs.cpp.o
+.PHONY : src/buildTabs.o
+
+# target to build an object file
+src/buildTabs.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/laranjal_foods.dir/build.make CMakeFiles/laranjal_foods.dir/src/buildTabs.cpp.o
+.PHONY : src/buildTabs.cpp.o
+
+src/buildTabs.i: src/buildTabs.cpp.i
+.PHONY : src/buildTabs.i
+
+# target to preprocess a source file
+src/buildTabs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/laranjal_foods.dir/build.make CMakeFiles/laranjal_foods.dir/src/buildTabs.cpp.i
+.PHONY : src/buildTabs.cpp.i
+
+src/buildTabs.s: src/buildTabs.cpp.s
+.PHONY : src/buildTabs.s
+
+# target to generate assembly for a file
+src/buildTabs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/laranjal_foods.dir/build.make CMakeFiles/laranjal_foods.dir/src/buildTabs.cpp.s
+.PHONY : src/buildTabs.cpp.s
+
 src/init_and_destroy.o: src/init_and_destroy.cpp.o
 .PHONY : src/init_and_destroy.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... laranjal_foods"
+	@echo "... src/buildTabs.o"
+	@echo "... src/buildTabs.i"
+	@echo "... src/buildTabs.s"
 	@echo "... src/init_and_destroy.o"
 	@echo "... src/init_and_destroy.i"
 	@echo "... src/init_and_destroy.s"

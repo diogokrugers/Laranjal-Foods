@@ -1,5 +1,7 @@
 #include <vector>
 #include <pthread.h>
+#include "headers/ThreadArgs.h"
+#include "headers/buildTabs.h"
 
 // AINDA TEM QUE TRATAR OS IFS CASO CRIAR A THREADS (e etc) FALHAR
 
@@ -19,13 +21,16 @@ void spawnThreads(std::vector<pthread_t>& threads,
                   const char* tipoEntregador, 
                   void* (*function)(void*))
 {
+    auto spacesForThreads = buildTabs(threads.size());
+
     for (size_t i = 0; i < threads.size(); i++){
-        pthread_create(&threads[i], NULL, function, (void*) tipoEntregador);
+        ThreadArgs* args = new ThreadArgs{tipoEntregador, spacesForThreads[i], (int) i + 1};
+        pthread_create(&threads.at(i), NULL, function, (void*) args);
     }
 }
 
 void joinThreads(std::vector<pthread_t>& threads){
     for (size_t i = 0; i < threads.size(); i++){
-        pthread_join(threads[i], NULL);
+        pthread_join(threads.at(i), NULL);
     }
 }
